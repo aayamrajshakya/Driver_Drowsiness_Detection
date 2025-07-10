@@ -1,4 +1,5 @@
-drowsiness_env/ #pip env
+drowsiness_env/
 dataset/
 splitted_data/
 .ipynb_checkpoints
+*.keras
