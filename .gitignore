@@ -1,0 +1,4 @@
+drowsiness_env/ #pip env
+dataset/
+splitted_data/
+.ipynb_checkpoints
