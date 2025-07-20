@@ -1,0 +1,23 @@
+# Driver Drowsiness Detection
+
+This project implements a real-time driver drowsiness detection system using a stacking ensemble of pre-trained large CNNs and OpenCV.
+
+## Overview
+
+- Stacking ensemble of **DenseNet121**, **EfficientNetV2B2**, and **MobileNetV2**
+- Hyperparameter tuning was performed using **Bayesian optimization** with Optuna
+- Face detection is performed on a **real-time webcam feed** using OpenCV and Haar cascade classifier
+- **Continuous feeding** of extracted face frames to a trained TensorFlow model for drowsiness classification
+- **Audio alert** (`alert.wav`) activated upon drowsy state detection
+
+## File structure
+
+```
+├── alert.wav                  # Sound alert played on drowsiness detection
+├── best_hyperparameters.yaml  # Optuna-tuned hyperparameters for ensemble model
+├── class_names.json           # Classification labels
+├── cv2model.py                # Real-time detection GUI app
+├── data_clean                 # EXTRA (not used)
+├── ensemble.ipynb             # Initial codebase
+└── trained.ipynb              # Notebook with results after training
+```
