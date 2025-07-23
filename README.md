@@ -18,6 +18,15 @@ This project implements a real-time driver drowsiness detection system using a s
 ├── class_names.json           # Classification labels
 ├── cv2model.py                # Real-time detection GUI app
 ├── data_clean                 # EXTRA (not used)
+├── deps.txt                   # Required dependencies
 ├── ensemble.ipynb             # Initial codebase
+├── gradio.py                  # Gradio GUI
 └── trained.ipynb              # Notebook with results after training
 ```
+
+## Installation
+
+Install the required dependencies using:
+
+```bash
+pip install -r deps.txt

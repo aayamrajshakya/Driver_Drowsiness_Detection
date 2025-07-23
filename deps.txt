@@ -1,0 +1,12 @@
+split-folders
+optuna
+optuna-integration
+plotly
+nbformat
+numpy==1.26.4      # Required for TensorFlow compatibility
+tensorflow==2.10.1 # GPU support requires <2.11
+matplotlib
+scikit-learn
+simpleaudio
+opencv-python
+gradio
