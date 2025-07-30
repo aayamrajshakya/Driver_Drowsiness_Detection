@@ -20,6 +20,7 @@ This project implements a real-time driver drowsiness detection system using a s
 ├── data_clean                 # EXTRA (not used)
 ├── deps.txt                   # Required dependencies
 ├── ensemble.ipynb             # Initial codebase
+├── example.keras              # Sample pretrained model to use with cv2model.py
 ├── gradio.py                  # Gradio GUI
 └── trained.ipynb              # Notebook with results after training
 ```
@@ -30,3 +31,6 @@ Install the required dependencies using:
 
 ```bash
 pip install -r deps.txt
+```
+
+Download the Haar cascade classifier file from: [haarcascade_frontalface_default.xml](https://github.com/opencv/opencv/blob/master/data/haarcascades/haarcascade_frontalface_default.xml)

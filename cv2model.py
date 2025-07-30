@@ -7,7 +7,7 @@ import tensorflow as tf
 face_cascade = cv2.CascadeClassifier(cv2.data.haarcascades + 'haarcascade_frontalface_default.xml')
 
 font = cv2.FONT_HERSHEY_SIMPLEX
-ensemble_model = tf.keras.models.load_model('best_model.keras')
+ensemble_model = tf.keras.models.load_model('example.keras')
 class_names = ['Drowsy', 'Non drowsy']  # Hardcoded instead of json.load
 
 # Alert sound effect for drowsiness
@@ -29,17 +29,18 @@ while True:
         print("Error: Could not read frame.")
         break
 
+    flipped_frame = cv2.flip(frame, 1)
     # Convert frame to grayscale for face detection
-    gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
+    gray = cv2.cvtColor(flipped_frame, cv2.COLOR_BGR2GRAY)
     face = face_cascade.detectMultiScale(gray, scaleFactor=1.1, minNeighbors=5, minSize=(30, 30))
 
     # Draw bounding boxes around detected faces
     for (x, y, w, h) in face:
-        cv2.rectangle(frame, (x, y), (x + w, y + h), (0, 255, 0), 2)
-        cv2.putText(frame, 'subject', (x, y - 10), font, 1, (0, 255, 0), 2)
+        cv2.rectangle(flipped_frame, (x, y), (x + w, y + h), (0, 255, 0), 2)
+        cv2.putText(flipped_frame, 'subject', (x, y - 10), font, 1, (0, 255, 0), 2)
 
     # Preprocess frame for model prediction
-    img = cv2.resize(frame, (224, 224))
+    img = cv2.resize(flipped_frame, (224, 224))
     img = np.expand_dims(img, axis=0)
     img = img / 255.0  # model was trained on images in [0-1] scale
 
@@ -65,13 +66,13 @@ while True:
     text2 = "Predicted: " + predicted_class
     color = (0, 0, 255) if predicted_class == 'Drowsy' else (0, 255, 0)  # color order is BGR
 
-    cv2.putText(frame, text1, (10, 20), font, 0.5, color, 1, cv2.LINE_AA)
-    cv2.putText(frame, text2, (10, 40), font, 0.5, color, 1, cv2.LINE_AA)
+    cv2.putText(flipped_frame, text1, (10, 20), font, 0.5, color, 1, cv2.LINE_AA)
+    cv2.putText(flipped_frame, text2, (10, 40), font, 0.5, color, 1, cv2.LINE_AA)
 
     # Display the frame
     win_title = 'Real-time Driver Drowsiness Detection'
     cv2.namedWindow(win_title, cv2.WINDOW_NORMAL)
-    cv2.imshow(win_title, frame)
+    cv2.imshow(win_title, flipped_frame)
 
     if cv2.waitKey(1) & 0XFF == 27:
         break
