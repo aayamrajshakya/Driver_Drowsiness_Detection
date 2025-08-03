@@ -14,15 +14,14 @@ This project implements a real-time driver drowsiness detection system using a s
 
 ```
 ├── alert.wav                  # Sound alert played on drowsiness detection
-├── best_hyperparameters.yaml  # Optuna-tuned hyperparameters for ensemble model
+├── best_hyperparameters.yaml  # Example conf. file for optimal hyperparameters from Optuna fine-tuning
 ├── class_names.json           # Classification labels
 ├── cv2model.py                # Real-time detection GUI app
 ├── data_clean                 # EXTRA (not used)
 ├── deps.txt                   # Required dependencies
-├── ensemble.ipynb             # Initial codebase
+├── ensemble.ipynb             # Main codebase
 ├── example.keras              # Sample pretrained model to use with cv2model.py
-├── gradio.py                  # Gradio GUI
-└── trained.ipynb              # Notebook with results after training
+└── gradio.py                  # Gradio GUI
 ```
 
 ## Installation
@@ -33,4 +32,4 @@ Install the required dependencies using:
 pip install -r deps.txt
 ```
 
-Download the Haar cascade classifier file from: [haarcascade_frontalface_default.xml](https://github.com/opencv/opencv/blob/master/data/haarcascades/haarcascade_frontalface_default.xml)
+If needed, download the Haar cascade classifier file from: [haarcascade_frontalface_default.xml](https://github.com/opencv/opencv/blob/master/data/haarcascades/haarcascade_frontalface_default.xml)
